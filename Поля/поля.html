@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 причин любить тебя, любимая Поля ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Comfortaa', cursive;
+            background: linear-gradient(135deg, #ffe6e8 0%, #ffd1dc 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #4a4a4a;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #ff4b72;
+            font-size: 2.2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+
+        p.subtitle {
+            font-size: 1.1rem;
+            color: #7a505f;
+        }
+
+        .reasons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 50px;
+        }
+
+        .reason-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #ffb6c1;
+            padding: 16px 20px;
+            border-radius: 20px;
+            font-size: 1.05rem;
+            font-family: 'Comfortaa', cursive;
+            color: #d83a6f;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .reason-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            background: #ffffff;
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+            border-color: #ff69b4;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 25px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-img {
+            width: 100%;
+            max-height: 380px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .modal-title {
+            color: #ff4b72;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .modal-text {
+            font-size: 0.98rem;
+            line-height: 1.5;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .close-btn {
+            background: #ff4b72;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-family: 'Comfortaa', cursive;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .close-btn:hover {
+            background: #e03e61;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff4b72;
+            font-size: 24px;
+            pointer-events: none;
+            animation: floatUp 4s linear infinite;
+            z-index: 9999;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Любимая Поля ❤️</h1>
+        <p class="subtitle">7 причин любить тебя (наши 30 дней вместе) ✨</p>
+    </header>
+
+    <div class="reasons-container">
+        <button class="reason-btn" onclick="openModal(1)"><span>1. Наш долгий взгляд 👀</span> <span>👉</span></button>
+        <button class="reason-btn" onclick="openModal(2)"><span>2. Твой первый ответ 📱</span> <span>👉</span></button>
+        <button class="reason-btn" onclick="openModal(3)"><span>3. Прогулки до дома 🌙</span> <span>👉</span></button>
+        <button class="reason-btn" onclick="openModal(4)"><span>4. Наши первые объятия 🫂</span> <span>👉</span></button>
+        <button class="reason-btn" onclick="openModal(5)"><span>5. "Пошлая Молли" на повторе 🎧</span> <span>👉</span></button>
+        <button class="reason-btn" onclick="openModal(6)"><span>6. Твоя поддержка и забота 💖</span> <span>👉</span></button>
+        <button class="reason-btn" onclick="openModal(7)" style="background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%); color: white; border: none;"><span>7. Самая главная причина 🔥</span> <span>❤️</span></button>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <img id="modal-img" class="modal-img" src="" alt="Любимая Поля">
+            <div id="modal-title" class="modal-title"></div>
+            <div id="modal-text" class="modal-text"></div>
+            <button class="close-btn" onclick="closeModal()">Закрыть 💕</button>
+        </div>
+    </div>
+
+    <script>
+        const modalData = {
+            1: {
+                title: "Как всё начиналось... 👀",
+                text: "Солнышко, помнишь, как перед знакомством мы 2 недели подряд везде смотрели друг на друга? Этот взгляд я не забуду никогда. У тебя самые невероятные глаза, зайка!"
+            },
+            2: {
+                title: "Твой первый ответ 💬",
+                text: "Ты даже не представляешь, как бешено билось моё сердце и как сильно я радовался, когда ты впервые ответила на моё сообщение! Это был один из самых счастливых моментов. Моя любимая Поля!"
+            },
+            3: {
+                title: "Наши вечера 🌙",
+                text: "Как же я любил провожать тебя до дома... Каждая минута, проведённая рядом с тобой, была самым лучшим временем за день. Уличные фонари, тишина и ты, моё солнышко, рядом со мной."
+            },
+            4: {
+                title: "Первые объятия 🫂",
+                text: "Наши первые обнимашки... В тот момент весь остальной мир просто перестал существовать. Тепло твоих рук и то, как ты прижалась ко мне — самый уютный момент на свете, заинька!"
+            },
+            5: {
+                title: "Наш вайб и 'Пошлая Молли' 🎸",
+                text: "Обожаю то, как мы вместе любим слушать 'Пошлую Молли'! Наша общая музыка и наши безумные моменты — ты мой самый лучший компаньон и любимый человечек."
+            },
+            6: {
+                title: "Твоя поддержка 💖",
+                text: "Спасибо тебе огромное за то, как ты помогала мне пережить самые трудные моменты. Твои добрые слова, забота и нежность давали мне силы. Ты моя поддержка и моё счастье."
+            },
+            7: {
+                title: "Спасибо тебе за месяц! 🎉❤️",
+                text: "Любимая Поля, зайка, солнышко моё! Спасибо тебе за этот месяц, я тебя очень люблю! Наше с тобой фото поцелуя — напоминание о том, как сильно я тобой дорожу! 🔥❤️"
+            }
+        };
+
+        function openModal(id) {
+            const modal = document.getElementById('modal');
+            const img = document.getElementById('modal-img');
+            const title = document.getElementById('modal-title');
+            const text = document.getElementById('modal-text');
+
+            img.src = id + '.jpg';
+            title.innerText = modalData[id].title;
+            text.innerText = modalData[id].text;
+
+            modal.classList.add('active');
+
+            if (id === 7) {
+                createHeartExplosion();
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('active');
+        }
+
+        function createHeartExplosion() {
+            for (let i = 0; i < 60; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerHTML = '❤️';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                    document.body.appendChild(heart);
+
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 4000);
+                }, i * 80);
+            }
+        }
+    </script>
+</body>
+</html>
